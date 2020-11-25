@@ -1,0 +1,71 @@
+http://www1.cs.columbia.edu/~lok/csharp/assignments.html
+
+
+C# - Hands-on Exercises
+Overview:
+The hands-on practical exercises outlined below are designed to exercise your C# programming muscles.  These assignments are a critical part of the learning process.  Attending the lectures (or watching the tapes) without completing these exercises will be a fruitless endeavor.  
+Timing:
+The exercises are designed to be completed sequentially.  Each exercise builds upon code written in a previous assignment.  Depending on the amount of previous programming experience that you have, you should be able to begin working on the first assignment after the first or second lecture.  Each exercise after that can completely after studying one additional lecture.  Start early.  Leaving the exercises for the 11th hour is an ineffective method to go about completing this extremely important part of the class.
+Quality:
+Your implementation should adhere to the highest code quality standards.  Your code should be well documented (README files for execution and compilation), commented (one comment for each line of logic plus comments for API documentation generation), robust (what if you try to input 10000 characters instead of 15?), bulletproofed (in case the user types in rottweiler instead of a non-negative floating point number like you asked) and readable (use a consistent coding style, avoid using more than 80 characters on a line).
+
+I have a passion for good software and smooth human-computer interaction.  It upsets me when I see developers release code that either does not work properly or cannot handle the simplest of user errors or omissions.  A significant part of your potentially high grade for an assignment that contains the required functionality will be eroded away if the implementation is poor.
+Submission and Feedback:
+The final system that you will build fully encorporates all of the preceding assignments.  For this reason, I do not require that students submit anything other than the final system.  However, I highly reccomend getting feedback from me at each stopping point.  The earlier you start and the earlier that you turn things in, the more feedback you will receive from me and the more likely you will be able to successfully build the final system.  To submit your assignment, create an archive file out of your code and attach it to an email to lok@cs.columbia.edu.
+Specifications:
+Exercise 1:
+
+Lookup the System.DateTime structure.  This type contains a large amount of functionality that allows a user to perform all sorts of interesting operations with dates and times.  Use System.DateTime along with System.Console to implement a simple C# program that does the following:
+Ask the user for their birthday.  It will probably easiest to ask year, then month, then day rather than parsing a combined string reliably.
+Calculate the age of the user.
+Check to see if the age of the user is impossible.  For example, if the user is not yet born, output an error message.  If the user claims to be 135 years old, then let them know that's not possible.
+Output the age of the user to the console.
+If it is the user's birthday, output a nice message.
+Compute the user's astrological sign according to both the Western (sun sign) and Chinese astrological systems.  If you are not familiar with these astrological systems, look them up on the web.
+Output the computed signs to the console.  Optionally output additional information (e.g. horoscope of the day) about the user based on their sign.
+Exercise 2:
+
+Create a reference type called Person.  Populate the Person class with the following properties to store the following information:
+First name
+Last name
+Email address
+Date of birth
+Add constructors that accept the following parameter lists:
+All four parameters
+First, Last, Email
+First, Last, Date of birth
+Add read-only properties that return the following computed information:
+Adult - whether or not the person is over 18
+Sun sign - the traditional western sun sign of this person
+Chinese sign - the chinese astrological sign (animal) of this person
+Birthday - whether or not today is the person's birthday
+Screen name - a default screen name that you might see being offered to a first time user of AOL or Yahoo (e.g. John Doe born on Feburary 25th, 1980 might be jdoe225 or johndoe022580)
+Build a test harness for this class and exercise all functionality in it.  You should take this part of the exercise very seriously.  Many people tend to treat test harnesses as second class citizens of the computer program world.  I do not.  Thorough and robust test harnesses are an extremely important part of the development process.  According to the current trendy eXtreme Programming principles, you should actually be creating the test harnesses before you actually write the code.  A good test harness will have more lines of code (sometimes two or thee times more!) than the functionality.
+
+Make sure that your class has the proper documentation. This means both inline comments as well as XML API documentation. Like test harnesses, documentation is an often overlooked part of the development process, particularly with academic exercises. Though it feels painful in the short term, it pays for itself many times over in the long run.
+
+Exercise 3:
+
+Take some time and think carefully about your Person class and think carefully about things that might go wrong when using it.  For example, you should not be able to create people that have not been born.  In addition, a valid email address is of the form joeschmoe@mydomain.com.  
+
+Find exception classes in the CLI class heirarchy that would match the problems you might find.  In many cases, you will not find a matching class.  Implement exception classes that convey the appropriate error. At very least you should implement the following exceptions:
+Date of birth is in the future
+Date of birth is too far in the past (we're only dealing with people who are alive).
+Invalid email address
+There are probably lots more that you can (and should) implement. You do not need to do extremely robust checking on the email address. Just some simple example checking to show that you know what you're supposed to be doing will be fine. Add code into the Person class that throws these exceptions if the problematic condition is met. Integrate test cases for these exceptional conditions into your test harness.
+
+Exercise 4:
+
+Create an interface called Payable.  This is the interface that will be used by the accounting department's software (which you are not responsible for authoring) for all things that they need to write checks for.  The Payable interface should contain three functions:
+Retrieve amount due
+Add to amount due
+Payment address
+Derive an Employee class from the Person class.  The Employee class should add the following properties:
+Salary
+Mailing address
+In addition, the Employee class should implement the Payable interface.  The implementation of the functions specified in the Payable interface should make sense.  In other words, the payment address should be the mailing address of the employee.   In order to make this work right, you will need to allocate an internally protected state variable that keeps track of the amount of money due. This state variable will obviously be modified by the functions defined in the interface. You can of course, try to do this with a property and add this property to the Payable interface.
+
+Exercise 5:
+
+Look at the MSDN instant messaging system example code for delegates and events via remoting.  This code is mirrored in the file library.  Change the system so that when the client starts up, it asks all of the appropriate information to create a fully populated Employee object.  Change the server so that when the client logs on, the employee object is passed and the server outputs nice messages to the group chat in order to "break the ice" and help other people in the room start a conversation with the new person.  In particular, the server should talk about the user's date of birth, mention if it's the user's birthday, tell the entire world about the user's salary (!?! :), etc.
+
